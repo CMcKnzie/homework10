@@ -15,12 +15,8 @@ export const create = async (req, res) => {
 
     } catch(error) {
         res.status(500).json({error: "Internal Server Error "})
-
     }
-
 }
-
-
 
 export const fetch = async(req, res) => {
     try {
@@ -51,7 +47,22 @@ export const update = async (req, res) => {
         res.status(201).json(updateEmployee)
     } catch (error) {
         res.status(500).json ({error: "Internal Sever Error"})
-
     }
-
 }
+
+// export const deleteEmployee = async (req, res) => {
+//     try {
+//         const id = req.params.id
+//         const employeeExists = await Employee.findOne({_id:id})
+
+//         if(!employeeExists){
+//             return res.status(404).json({message: "Employee not found"})
+//         }
+
+//         await Employee.findByIdAndDelete(id)
+//         res.status(201).json({message: "Employee record deleted"})
+//     } catch (error) {
+//         res.status(500).json ({error: "Internal Sever Error"})
+//     }
+
+// }
