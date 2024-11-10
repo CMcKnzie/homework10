@@ -66,3 +66,20 @@ export const update = async (req, res) => {
 //     }
 
 // }
+
+export const findEmployee = async (req, res) => {
+    try {
+        const id = req.params.id
+        const employeeExists = await Employee.findOne({_id:id})
+
+        if(!employeeExists) {
+            return res.status(404).json({message: "Employee not found"})
+        }
+
+        res.status(200).json(employeeExists)
+
+    }catch (error) {
+        res.status(500).json ({error: "Internal Sever Error"})
+    }
+
+    }
